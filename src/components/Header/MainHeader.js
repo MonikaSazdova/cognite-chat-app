@@ -1,4 +1,3 @@
-import React from 'react';
 import cognite_logo from '../../assets/cognite_logo.webp';
 
 const MainHeader = () => {
