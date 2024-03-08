@@ -4,9 +4,9 @@ import ChatWindow from '../components/ChatWindow/ChatWindow';
 
 function ChatPage() {
   return (
-    <div className="flex h-screen">
+    <div className="flex h-full pt-16">
       <Sidebar />
-      <div className="flex w-full" style={{ height: 'calc(100vh - 60px)' }}>
+      <div className="flex w-full" style={{ height: 'calc(100vh - 64px)' }}>
         <ContactsList />
         <ChatWindow />
       </div>
