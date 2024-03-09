@@ -3,7 +3,7 @@ export const users = [
     userId: "00",
     name: "Monika",
     surname: "Sazdova",
-    contacts: ["01", "02", "03", "04", "05", "06", "07"],
+    contacts: ["01", "02", "03", "04", "05", "06", "07", "08", "09"],
   },
   {
     userId: "01",
@@ -51,14 +51,14 @@ export const users = [
     userId: "08",
     name: "Petteri",
     surname: "Vainikka",
-    contacts: [],
+    contacts: ["00"],
   },
   {
     userId: "09",
     name: "Emmanuelle",
     surname: "Camus",
-    contacts: [],
-  },
+    contacts: ["00"],
+  }
 ];
 
 export const chats = [
