@@ -15,7 +15,7 @@ function ChatWindow() {
   ];
   return (
     <div className="w-2/3 bg-gray-400 flex flex-col">
-      <ChatWindowHeader name="Monika" />
+      <ChatWindowHeader name="Jon" surname="Doe" />
       <ChatWindowBody messages={messages}/>
       <TypeField />
     </div>
