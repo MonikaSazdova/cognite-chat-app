@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { adjustTextareaHeight } from "../../utils/utils";
 import { useDispatch } from "react-redux";
-import { setNewMessage } from "../../store/actions/chatActions";
+import { setNewMessages } from "../../store/actions/chatActions";
 import { useUser } from "../../context/UserContext";
 import { v4 as uuidv4 } from "uuid";
 
 function TypeField() {
   const loggedUser = useUser();
   const [messageText, setMessageText] = useState("");
+  const [sentMessages, setSentMessages] = useState([]);
   const dispatch = useDispatch();
 
   const handleInputChange = (e) => setMessageText(e.target.value);
@@ -20,11 +21,17 @@ function TypeField() {
         timestamp: new Date().toISOString(),
         userId: loggedUser.userId,
       };
-
-      dispatch(setNewMessage(newMessage));
+      setSentMessages(prevMessages => [...prevMessages, newMessage])
       setMessageText("");
     }
   };
+
+  useEffect(() => {
+    if (sentMessages.length > 0) {
+      dispatch(setNewMessages(sentMessages[sentMessages.length - 1]));
+    }
+  }, [sentMessages, dispatch]);
+
 
   return (
     <div className="w-full max-h-52 flex-shrink-0 bg-white pl-10 pr-14 py-3 pt-4 items-center flex flex-row justify-between border-y border-gray-300">

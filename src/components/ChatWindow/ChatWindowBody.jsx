@@ -3,20 +3,22 @@ import backgroundImg from "../../assets/chat_background.png";
 import { useSelector } from "react-redux";
 import { useEffect, useState, useRef } from "react";
 
+
 function ChatWindowBody({ currentChat }) {
   const [messages, setMessages] = useState(currentChat?.messages || []);
-  const newMessage = useSelector((state) => state.chat.newMessage);
+  const newMessages = useSelector((state) => state.chat.newMessages);
   const windowBottom = useRef(null);
 
   useEffect(() => {
     if (currentChat?.messages) {
-      if (newMessage?.text && newMessage.text.trim() !== "") {
-        setMessages(prev => [...prev, newMessage]);
+      if (newMessages.length > 0) {
+        setMessages([...currentChat.messages, ...newMessages]);
+      } else {
+        setMessages([...currentChat.messages]);
       }
-      setMessages(currentChat.messages);
-    }
-  }, [newMessage, currentChat]);
 
+    }
+  }, [newMessages, currentChat]);
 
   useEffect(() => {
     windowBottom.current?.scrollIntoView({ behavior: "smooth" });
