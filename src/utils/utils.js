@@ -15,3 +15,36 @@ export const adjustTextareaHeight = e => {
 	}
 	textarea.style.height = `${newHeight}px`;
 }
+
+
+export const getTimeDescription = timestamp => {
+  const now = new Date();
+  const date = new Date(timestamp);
+  const diffInHours = Math.floor((now - date) / (1000 * 60 * 60));
+  const diffInDays = Math.floor(diffInHours / 24);
+  const diffInWeeks = Math.floor(diffInDays / 7);
+  const diffInMonths = Math.floor(diffInDays / 30);
+  const diffInYears = Math.floor(diffInDays / 365);
+
+  if (diffInHours < 24) return `${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
+  if (diffInHours < 48) return 'yesterday';
+  if (diffInHours < 72) return 'two days ago';
+  if (diffInHours < 96) return 'three days ago';
+  if (diffInDays < 7) return 'few days ago';
+  if (diffInWeeks === 1) return 'a week ago';
+  if (diffInWeeks === 2) return 'two weeks ago';
+  if (diffInWeeks === 3) return 'three weeks ago';
+  if (diffInMonths === 1) return 'a month ago';
+  if (diffInMonths === 2) return 'two months ago';
+  if (diffInMonths === 3) return 'three months ago';
+  if (diffInMonths > 3 && diffInMonths < 12) return 'few months ago';
+  if (diffInYears === 1) return 'a year ago';
+  if (diffInYears === 2) return 'two years ago';
+  return 'a long time ago';
+}
+
+
+export const setDefaultSelectedContact = (loggedUser, users) => {
+  const defaultUserId = loggedUser.contacts[0];
+  return users.find((user) => user.userId === defaultUserId);
+};
