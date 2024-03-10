@@ -33,10 +33,14 @@ code {
 }
 
 *::-webkit-scrollbar-thumb {
- background: #2564eb73;
+ background: #c8ceddea;
  border-radius: 5px;
 }
 
 *::-webkit-scrollbar-thumb:hover {
- background: #2564eb97;
+ background: #c8cedd73;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background: #c8cedd73;
 }
