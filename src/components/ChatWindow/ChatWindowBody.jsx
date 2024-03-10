@@ -1,18 +1,21 @@
 import MessageCard from "./MessageCard";
 import backgroundImg from "../../assets/chat_background.png";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from 'react';
-
+import { useEffect, useState, useRef } from "react";
 
 function ChatWindowBody({ currentChat }) {
   const [messages, setMessages] = useState(currentChat?.messages || []);
-  const sentMessage = useSelector(state => state.chat.sentMessage);
+  const sentMessage = useSelector((state) => state.chat.sentMessage);
+  const windowBottom = useRef(null);
+  useEffect(() => {
+    if (sentMessage?.text && sentMessage.text.trim() !== "") {
+      setMessages((prevMessages) => [...prevMessages, sentMessage]);
+    }
+  }, [sentMessage]);
 
   useEffect(() => {
-    if (sentMessage?.text && sentMessage.text.trim() !== '') {
-      setMessages(prevMessages => [...prevMessages, sentMessage]);
-    }
-  }, [sentMessage])
+    windowBottom.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   return (
     <div
@@ -33,6 +36,7 @@ function ChatWindowBody({ currentChat }) {
           />
         ))
       )}
+      <div ref={windowBottom} />
     </div>
   );
 }
