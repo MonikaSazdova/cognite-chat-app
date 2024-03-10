@@ -20,7 +20,7 @@ function ContactsList() {
   }, [loggedUser, dispatch]);
 
   const getUserContacts = (ids) => {
-    users.filter((user) => ids.includes(user.userId));
+    return users.filter((user) => ids.includes(user.userId));
   }
 
   const onCardClick = (contact) => () => dispatch(setSelectedContact(contact));
