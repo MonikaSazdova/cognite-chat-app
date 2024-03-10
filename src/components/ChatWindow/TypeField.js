@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { adjustTextareaHeight } from "../../utils/utils";
 import { useDispatch } from "react-redux";
-import { setSentMessage } from "../../store/actions/chatActions";
+import { setNewMessage } from "../../store/actions/chatActions";
 import { useUser } from "../../context/UserContext";
 import { v4 as uuidv4 } from "uuid";
 
@@ -21,7 +21,7 @@ function TypeField() {
         userId: loggedUser.userId,
       };
 
-      dispatch(setSentMessage(newMessage));
+      dispatch(setNewMessage(newMessage));
       setMessageText("");
     }
   };

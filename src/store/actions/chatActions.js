@@ -5,4 +5,4 @@ export const SET_NEW_MESSAGE = 'SET_NEW_MESSAGE';
 
 export const setSelectedContact = contact => ({ type: SET_SELECTED_CONTACT, payload: contact })
 export const setContacts = contacts => ({type: SET_CONTACTS, payload: contacts})
-export const setSentMessage = message => ({type: SET_NEW_MESSAGE, payload: message})
+export const setNewMessage = message => ({type: SET_NEW_MESSAGE, payload: message})

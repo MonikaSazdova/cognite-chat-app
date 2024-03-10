@@ -5,13 +5,14 @@ import { useEffect, useState, useRef } from "react";
 
 function ChatWindowBody({ currentChat }) {
   const [messages, setMessages] = useState(currentChat?.messages || []);
-  const sentMessage = useSelector((state) => state.chat.sentMessage);
+  const newMessage = useSelector((state) => state.chat.newMessage);
   const windowBottom = useRef(null);
+
   useEffect(() => {
-    if (sentMessage?.text && sentMessage.text.trim() !== "") {
-      setMessages((prevMessages) => [...prevMessages, sentMessage]);
+    if (newMessage?.text && newMessage.text.trim() !== "") {
+      setMessages((prevMessages) => [...prevMessages, newMessage]);
     }
-  }, [sentMessage]);
+  }, [newMessage, currentChat]);
 
   useEffect(() => {
     windowBottom.current?.scrollIntoView({ behavior: "smooth" });

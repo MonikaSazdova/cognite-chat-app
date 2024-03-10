@@ -13,7 +13,7 @@ const chatReducer = (state = initialState, action) => {
 		case SET_CONTACTS:
 			return { ...state, contacts: action.payload }
 		case SET_NEW_MESSAGE:
-			return {...state, sentMessage: action.payload}
+			return {...state, newMessage: action.payload}
 		default:
 			return state;
 	}
