@@ -13,7 +13,6 @@ function ChatWindowBody({ currentChat }) {
       setMessages(prevMessages => [...prevMessages, sentMessage]);
     }
   }, [sentMessage])
-  console.log('All messages', messages);
 
   return (
     <div
