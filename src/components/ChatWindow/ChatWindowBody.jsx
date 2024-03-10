@@ -9,10 +9,14 @@ function ChatWindowBody({ currentChat }) {
   const windowBottom = useRef(null);
 
   useEffect(() => {
-    if (newMessage?.text && newMessage.text.trim() !== "") {
-      setMessages((prevMessages) => [...prevMessages, newMessage]);
+    if (currentChat?.messages) {
+      if (newMessage?.text && newMessage.text.trim() !== "") {
+        setMessages(prev => [...prev, newMessage]);
+      }
+      setMessages(currentChat.messages);
     }
   }, [newMessage, currentChat]);
+
 
   useEffect(() => {
     windowBottom.current?.scrollIntoView({ behavior: "smooth" });
