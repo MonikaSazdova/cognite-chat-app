@@ -7,11 +7,14 @@ import {
   setSelectedContact,
   setContacts,
 } from "../../store/actions/chatActions";
+import { setDefaultSelectedContact } from "../../utils/utils";
 
 function ContactsList() {
   const dispatch = useDispatch();
   const loggedUser = useUser();
   const userContacts = useSelector((state) => state.chat.contacts);
+  const defaultUser = setDefaultSelectedContact(loggedUser, users);
+  const selectedContact = useSelector((state) => state.chat.selectedContact) || defaultUser;
 
   useEffect(() => {
     const userContactsIds = loggedUser.contacts;
@@ -23,7 +26,9 @@ function ContactsList() {
     return users.filter((user) => ids.includes(user.userId));
   }
 
-  const onCardClick = (contact) => () => dispatch(setSelectedContact(contact));
+  const onCardClick = (contact) => () => {
+    dispatch(setSelectedContact(contact));
+  };
 
   return (
     <div className="flex-1 w-2/3 bg-white p-3 rounded-tl-lg border border-gray-300 overflow-x-auto">
@@ -33,6 +38,7 @@ function ContactsList() {
           key={i}
           contact={contact}
           onClick={onCardClick(contact)}
+          isSelected={contact.userId === selectedContact.userId}
         />
         )
       })

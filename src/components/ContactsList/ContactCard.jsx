@@ -1,9 +1,13 @@
 import InitialsAvatar from "../User/InitialsAvatar";
 
-function ContactCard({ contact, onClick }) {
+function ContactCard({ contact, onClick, isSelected }) {
   return (
     <div
-      className="p-3 bg-slate-100 flex flex-wrap items-center gap-2 mb-1 rounded-lg cursor-pointer"
+      className={`p-3 flex flex-wrap items-center gap-2 mb-1 rounded-lg cursor-pointer border border-gray-200  active:bg-slate-300 ${
+        isSelected
+          ? "bg-slate-300 hover:bg-slate-300"
+          : "bg-slate-100 hover:bg-slate-200"
+      }`}
       onClick={onClick}
     >
       <InitialsAvatar user={contact} isHeader={false} />
