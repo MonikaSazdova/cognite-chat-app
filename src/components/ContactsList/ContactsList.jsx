@@ -7,14 +7,13 @@ import {
   setSelectedContact,
   setContacts,
 } from "../../store/actions/chatActions";
-import { setDefaultSelectedContact } from "../../utils/utils";
+import useSelectedContact from "../../hooks/useSelectedContact";
 
 function ContactsList() {
   const dispatch = useDispatch();
   const loggedUser = useUser();
   const userContacts = useSelector((state) => state.chat.contacts);
-  const defaultUser = setDefaultSelectedContact(loggedUser, users);
-  const selectedContact = useSelector((state) => state.chat.selectedContact) || defaultUser;
+  const selectedContact = useSelectedContact()
 
   useEffect(() => {
     const userContactsIds = loggedUser.contacts;

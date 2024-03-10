@@ -1,13 +1,8 @@
 import { getTimeDescription } from "../../utils/utils";
-import { useUser } from "../../context/UserContext";
-import { users } from "../../data";
-import { useSelector } from "react-redux";
-import { setDefaultSelectedContact } from "../../utils/utils";
+import useSelectedContact from "../../hooks/useSelectedContact";
 
 function MessageCard({ text, timestamp, userId }) {
-  const loggedUser = useUser();
-  const defaultUser = setDefaultSelectedContact(loggedUser, users);
-  const selectedContact = useSelector(state => state.chat.selectedContact) || defaultUser;
+  const selectedContact = useSelectedContact();
   const isMessageFromContact = selectedContact.userId === userId;
   const formattedTime = getTimeDescription(timestamp);
 
