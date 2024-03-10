@@ -27,14 +27,17 @@ function ContactsList() {
 
   return (
     <div className="flex-1 w-2/3 bg-white p-3 rounded-tl-lg border border-gray-300 overflow-x-auto">
-      {userContacts.map((contact, i) => (
-        <ContactCard
+      {userContacts.map((contact, i) => {
+        return (
+          <ContactCard
           key={i}
-          name={contact.name}
-          surname={contact.surname}
+          contact={contact}
           onClick={onCardClick(contact)}
         />
-      ))}
+        )
+      })
+
+}
     </div>
   );
 }

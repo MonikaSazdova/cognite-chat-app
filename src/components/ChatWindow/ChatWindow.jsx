@@ -23,8 +23,7 @@ function ChatWindow() {
   return (
     <div className="w-2/3 bg-gray-400 flex flex-col">
       <ChatWindowHeader
-        name={selectedContact.name}
-        surname={selectedContact.surname}
+        contact={selectedContact}
       />
       <ChatWindowBody currentChat={currentChat} />
       <TypeField />

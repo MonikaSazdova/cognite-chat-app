@@ -1,10 +1,10 @@
 import InitialsAvatar from "../User/InitialsAvatar";
 
-function ChatWindowHeader({ name, surname }) {
+function ChatWindowHeader({ contact }) {
 	return (
 		<div className="w-full bg-white h-16 flex-shrink-0 p-3 items-center flex gap-2 border-y border-gray-300" >
-			<InitialsAvatar name={name} surname={surname} />
-			<div className="font-semibold truncate">{`${name} ${surname}`}</div>
+			<InitialsAvatar user={contact} isHeader={true} />
+			<div className="font-semibold truncate">{`${contact.name} ${contact.surname}`}</div>
 		</div>
 	)
 }
