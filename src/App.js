@@ -5,14 +5,12 @@ import ChatPage from '../src/pages/ChatPage';
 
 function App() {
   return (
-    <Router>
-      <div>
+    <Router basename={process.env.PUBLIC_URL}>
         <MainHeader />
         <Routes>
           <Route path="/" element={<Navigate replace to="/chat"/>} />
           <Route path="/chat" element={<ChatPage />} />
         </Routes>
-      </div>
     </Router>
   );
 }
