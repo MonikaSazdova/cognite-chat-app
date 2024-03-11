@@ -6,14 +6,17 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   setSelectedContact,
   setContacts,
+  setCurrentChat
 } from "../../store/actions/chatActions";
 import useSelectedContact from "../../hooks/useSelectedContact";
+import useSelectedChat from "../../hooks/useSelectedChat";
 
 function ContactsList() {
   const dispatch = useDispatch();
   const loggedUser = useUser();
   const userContacts = useSelector((state) => state.chat.contacts);
   const selectedContact = useSelectedContact()
+  const currentChat = useSelectedChat(selectedContact)
 
   useEffect(() => {
     const userContactsIds = loggedUser.contacts;
@@ -27,6 +30,7 @@ function ContactsList() {
 
   const onCardClick = (contact) => () => {
     dispatch(setSelectedContact(contact));
+    dispatch(setCurrentChat(currentChat));
   };
 
   return (
