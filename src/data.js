@@ -356,4 +356,14 @@ export const chats = [
       },
     ],
   },
+  {
+    chatId: '18',
+    participants: ['00', '08'],
+    messages: []
+  },
+  {
+    chatId: '19',
+    participants: ['00', '09'],
+    messages: []
+  }
 ];
