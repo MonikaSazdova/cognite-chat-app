@@ -1,6 +1,15 @@
 import InitialsAvatar from "../User/InitialsAvatar";
+import { useSelector } from "react-redux";
+import { getTimeDescription } from "../../utils/utils";
 
 function ContactCard({ contact, onClick, isSelected }) {
+  const chats = useSelector(state => state.chat.chats);
+  const selectedChat = chats.find(chat => chat.participants.includes(contact?.userId));
+  const lastMessage = selectedChat && selectedChat.messages.length > 0
+    ? selectedChat.messages[selectedChat.messages.length - 1]
+    : null;
+
+
   return (
     <div
       className={`p-3 flex flex-wrap items-center gap-2 mb-1 rounded-lg cursor-pointer border border-gray-200  active:bg-slate-300 ${
@@ -16,9 +25,9 @@ function ContactCard({ contact, onClick, isSelected }) {
           <span>{contact.name}</span>
           <span className="hidden sm:flex">{contact.surname}</span>
         </div>
-        {/* <div className="text-sm truncate">{lastMessage.text}</div> */}
+        <div className="text-sm truncate">{lastMessage ? lastMessage.text : ''}</div>
       </div>
-      {/* <div className="whitespace-nowrap self-end text-xs">{getTimeDescription(lastMessage.timestamp)}</div> */}
+      <div className="whitespace-nowrap self-end text-xs">{lastMessage ? getTimeDescription(lastMessage.timestamp) : ''}</div>
     </div>
   );
 }
