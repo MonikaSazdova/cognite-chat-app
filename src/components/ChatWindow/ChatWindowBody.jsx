@@ -7,21 +7,22 @@ import useSelectedContact from "../../hooks/useSelectedContact";
 
 function ChatWindowBody() {
   const newMessages = useSelector((state) => state.chat.newMessages);
-  const currentContact = useSelectedContact();
+  const selectedContact = useSelectedContact();
+  const selectedChat = useSelectedChat(selectedContact);
+  const [messages, setMessages] = useState([]);
   const windowBottom = useRef(null);
-  const currentChat = useSelectedChat(currentContact);
-  const [messages, setMessages] = useState(currentChat?.messages || []);
 
   useEffect(() => {
       if (newMessages.length > 0) {
-        setMessages([...currentChat.messages, ...newMessages]);
-      } else {
-        if (currentChat?.messages) {
-          setMessages([...currentChat.messages]);
+        setMessages([...selectedChat.messages, ...newMessages]);
+      }
+      else {
+        if (selectedChat?.messages) {
+          setMessages([...selectedChat.messages]);
         }
       }
 
-  }, [newMessages, currentChat]);
+  }, [newMessages, selectedChat]);
 
   useEffect(() => {
     windowBottom.current?.scrollIntoView({ behavior: "smooth" });
@@ -32,7 +33,7 @@ function ChatWindowBody() {
       className="w-full flex flex-col flex-grow overflow-auto gap-1 px-10 py-6 bg-cover bg-no-repeat bg-center"
       style={{ backgroundImage: `url(${backgroundImg})` }}
     >
-      {currentChat.messages.length === 0 && messages.length === 0 ? (
+      {selectedChat.messages.length === 0 && messages.length === 0 ? (
         <div className="flex flex-grow items-center justify-center">
           <p className="text-gray-500">Start a conversation</p>
         </div>

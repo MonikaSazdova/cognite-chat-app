@@ -6,17 +6,15 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   setSelectedContact,
   setContacts,
-  setCurrentChat
+  resetNewMessages,
 } from "../../store/actions/chatActions";
 import useSelectedContact from "../../hooks/useSelectedContact";
-import useSelectedChat from "../../hooks/useSelectedChat";
 
 function ContactsList() {
   const dispatch = useDispatch();
   const loggedUser = useUser();
   const userContacts = useSelector((state) => state.chat.contacts);
-  const selectedContact = useSelectedContact()
-  const currentChat = useSelectedChat(selectedContact)
+  const selectedContact = useSelectedContact();
 
   useEffect(() => {
     const userContactsIds = loggedUser.contacts;
@@ -24,13 +22,14 @@ function ContactsList() {
     dispatch(setContacts(contacts));
   }, [loggedUser, dispatch]);
 
+
   const getUserContacts = (ids) => {
     return users.filter((user) => ids.includes(user.userId));
-  }
+  };
 
   const onCardClick = (contact) => () => {
     dispatch(setSelectedContact(contact));
-    dispatch(setCurrentChat(currentChat));
+    dispatch(resetNewMessages())
   };
 
   return (
@@ -38,15 +37,13 @@ function ContactsList() {
       {userContacts.map((contact, i) => {
         return (
           <ContactCard
-          key={i}
-          contact={contact}
-          onClick={onCardClick(contact)}
-          isSelected={contact.userId === selectedContact.userId}
-        />
-        )
-      })
-
-}
+            key={i}
+            contact={contact}
+            onClick={onCardClick(contact)}
+            isSelected={contact.userId === selectedContact.userId}
+          />
+        );
+      })}
     </div>
   );
 }
