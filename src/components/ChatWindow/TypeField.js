@@ -26,6 +26,13 @@ function TypeField() {
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleOnSend();
+    }
+  };
+
   useEffect(() => {
     if (sentMessages.length > 0) {
       dispatch(setNewMessages(sentMessages[sentMessages.length - 1]));
@@ -42,6 +49,7 @@ function TypeField() {
         value={messageText}
         onChange={handleInputChange}
         onInput={adjustTextareaHeight}
+        onKeyDown={handleKeyPress}
       ></textarea>
       <button
         className="w-20 h-8 bg-blue-600 rounded-lg text-white"
