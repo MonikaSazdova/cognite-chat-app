@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   setSelectedContact,
   setContacts,
-  resetNewMessages,
 } from "../../store/actions/chatActions";
 import useSelectedContact from "../../hooks/useSelectedContact";
 
@@ -29,7 +28,6 @@ function ContactsList() {
 
   const onCardClick = (contact) => () => {
     dispatch(setSelectedContact(contact));
-    dispatch(resetNewMessages())
   };
 
   return (

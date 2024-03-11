@@ -1,21 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { adjustTextareaHeight } from "../../utils/utils";
 import { useDispatch } from "react-redux";
-import { setNewMessages } from "../../store/actions/chatActions";
+import { addMessageToChat } from "../../store/actions/chatActions";
 import { useUser } from "../../context/UserContext";
 import { v4 as uuidv4 } from "uuid";
+import useSelectedChat from "../../hooks/useSelectedChat";
+import useSelectedContact from "../../hooks/useSelectedContact";
 
 function TypeField() {
   const loggedUser = useUser();
   const [messageText, setMessageText] = useState("");
-  const [sentMessages, setSentMessages] = useState([]);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (sentMessages.length > 0) {
-      dispatch(setNewMessages(sentMessages[sentMessages.length - 1]));
-    }
-  }, [sentMessages, dispatch]);
+  const selectedContact = useSelectedContact();
+  const selectedChat = useSelectedChat(selectedContact);
+  const currentChatId = selectedChat.chatId;
 
   const handleInputChange = (e) => setMessageText(e.target.value);
 
@@ -27,7 +25,7 @@ function TypeField() {
         timestamp: new Date().toISOString(),
         userId: loggedUser.userId,
       };
-      setSentMessages(prevMessages => [...prevMessages, newMessage])
+      dispatch(addMessageToChat(currentChatId, newMessage));
       setMessageText("");
     }
   };
@@ -38,9 +36,6 @@ function TypeField() {
       handleOnSend();
     }
   };
-
-
-
 
   return (
     <div className="w-full max-h-52 flex-shrink-0 bg-white pl-10 pr-14 py-3 pt-4 items-center flex flex-row justify-between border-y border-gray-300">

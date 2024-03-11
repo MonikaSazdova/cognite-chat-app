@@ -1,9 +1,10 @@
-import { SET_SELECTED_CONTACT, SET_CONTACTS, SET_NEW_MESSAGES, RESET_NEW_MESSAGES } from "../actions/chatActions";
+import { chats as defaultChats} from "../../data";
+import { SET_SELECTED_CONTACT, SET_CONTACTS, ADD_MESSAGE_TO_CHAT } from "../actions/chatActions";
 
 const initialState = {
 	selectedContact: null,
 	contacts: [],
-	newMessages: []
+	chats: defaultChats
 }
 
 const chatReducer = (state = initialState, action) => {
@@ -12,10 +13,15 @@ const chatReducer = (state = initialState, action) => {
 			return { ...state, selectedContact: action.payload }
 		case SET_CONTACTS:
 			return { ...state, contacts: action.payload }
-		case SET_NEW_MESSAGES:
-			return { ...state, newMessages: [...state.newMessages, action.payload] };
-		case RESET_NEW_MESSAGES:
-			return { ...state, newMessages: [] };
+			case ADD_MESSAGE_TO_CHAT:
+				return {
+					...state,
+					chats: state.chats.map(chat =>
+						chat.chatId === action.payload.chatId
+							? { ...chat, messages: [...chat.messages, action.payload.message] }
+							: chat
+					),
+				};
 		default:
 			return state;
 	}
