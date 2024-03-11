@@ -8,7 +8,7 @@ function ChatWindow() {
   return (
     <div className="w-2/3 bg-gray-400 flex flex-col">
       <ChatWindowHeader contact={selectedContact} />
-      <ChatWindowBody />
+      <ChatWindowBody key={selectedContact.userId}/>
       <TypeField />
     </div>
   );
