@@ -11,6 +11,12 @@ function TypeField() {
   const [sentMessages, setSentMessages] = useState([]);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (sentMessages.length > 0) {
+      dispatch(setNewMessages(sentMessages[sentMessages.length - 1]));
+    }
+  }, [sentMessages, dispatch]);
+
   const handleInputChange = (e) => setMessageText(e.target.value);
 
   const handleOnSend = () => {
@@ -33,11 +39,7 @@ function TypeField() {
     }
   };
 
-  useEffect(() => {
-    if (sentMessages.length > 0) {
-      dispatch(setNewMessages(sentMessages[sentMessages.length - 1]));
-    }
-  }, [sentMessages, dispatch]);
+
 
 
   return (
