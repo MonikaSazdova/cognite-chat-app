@@ -5,7 +5,7 @@ import ChatPage from '../src/pages/ChatPage';
 
 function App() {
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router basename={process.env.NODE_ENV === 'production' ? process.env.PUBLIC_URL : ''}>
         <MainHeader />
         <Routes>
           <Route path="/" element={<Navigate replace to="/chat"/>} />
