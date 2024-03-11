@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/cognite-chat-app/static/css/main.91f85823.css",
-    "main.js": "/cognite-chat-app/static/js/main.c5ae8a7f.js",
+    "main.css": "/cognite-chat-app/static/css/main.a06e5b8c.css",
+    "main.js": "/cognite-chat-app/static/js/main.3c491da1.js",
     "static/js/453.b5afcdf2.chunk.js": "/cognite-chat-app/static/js/453.b5afcdf2.chunk.js",
     "static/media/chat_background.png": "/cognite-chat-app/static/media/chat_background.cc6d88a0224bf10a1e79.png",
     "static/media/cognite_logo.webp": "/cognite-chat-app/static/media/cognite_logo.753b65f8065369a120e4.webp",
     "index.html": "/cognite-chat-app/index.html",
-    "main.91f85823.css.map": "/cognite-chat-app/static/css/main.91f85823.css.map",
-    "main.c5ae8a7f.js.map": "/cognite-chat-app/static/js/main.c5ae8a7f.js.map",
+    "main.a06e5b8c.css.map": "/cognite-chat-app/static/css/main.a06e5b8c.css.map",
+    "main.3c491da1.js.map": "/cognite-chat-app/static/js/main.3c491da1.js.map",
     "453.b5afcdf2.chunk.js.map": "/cognite-chat-app/static/js/453.b5afcdf2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.91f85823.css",
-    "static/js/main.c5ae8a7f.js"
+    "static/css/main.a06e5b8c.css",
+    "static/js/main.3c491da1.js"
   ]
 }
