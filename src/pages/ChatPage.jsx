@@ -5,7 +5,7 @@ import ChatWindow from '../components/ChatWindow/ChatWindow';
 function ChatPage() {
   return (
     <div className="flex h-full pt-16">
-      <div className="w-16 flex-none">
+      <div className="hidden sm:flex w-16 flex-none">
         <Sidebar />
       </div>
       <div className="flex w-full flex-grow" style={{ height: 'calc(100vh - 64px)' }}>

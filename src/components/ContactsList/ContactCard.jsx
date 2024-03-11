@@ -12,7 +12,10 @@ function ContactCard({ contact, onClick, isSelected }) {
     >
       <InitialsAvatar user={contact} isHeader={false} />
       <div className="flex-1 min-w-0">
-        <div className="font-semibold truncate">{`${contact.name} ${contact.surname}`}</div>
+        <div className="font-semibold truncate flex gap-1">
+          <span>{contact.name}</span>
+          <span className="hidden sm:flex">{contact.surname}</span>
+        </div>
         {/* <div className="text-sm truncate">{lastMessage.text}</div> */}
       </div>
       {/* <div className="whitespace-nowrap self-end text-xs">{getTimeDescription(lastMessage.timestamp)}</div> */}
