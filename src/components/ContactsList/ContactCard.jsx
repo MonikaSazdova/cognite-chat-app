@@ -1,14 +1,20 @@
 import InitialsAvatar from "../User/InitialsAvatar";
-import { useData } from "../../context/DataContext";
 import { getTimeDescription } from "../../utils/utils";
+import { useSelector } from "react-redux";
 
 function ContactCard({ contact, onClick, isSelected }) {
-  const chats = useData().chats;
-  const selectedChat = chats.find(chat => chat.participants.includes(contact?.userId));
-  const lastMessage = selectedChat && selectedChat.messages.length > 0
-    ? selectedChat.messages[selectedChat.messages.length - 1]
-    : null;
+  const chats = useSelector((state) => state.chat.chats);
+  const selectedChat = chats.find((chat) =>
+    chat.participants.includes(contact?.userId)
+  );
+  const lastMessage = getLastMessage(selectedChat);
 
+  function getLastMessage(chat) {
+    if (chat && chat.messages.length > 0) {
+      return chat.messages[chat.messages.length - 1];
+    }
+    return null;
+  }
 
   return (
     <div
@@ -25,9 +31,13 @@ function ContactCard({ contact, onClick, isSelected }) {
           <span>{contact.name}</span>
           <span className="hidden sm:flex">{contact.surname}</span>
         </div>
-        <div className="text-sm truncate">{lastMessage ? lastMessage.text : ''}</div>
+        <div className="text-sm truncate">
+          {lastMessage ? lastMessage.text : ""}
+        </div>
       </div>
-      <div className="whitespace-nowrap self-end text-xs">{lastMessage ? getTimeDescription(lastMessage.timestamp) : ''}</div>
+      <div className="whitespace-nowrap self-end text-xs">
+        {lastMessage ? getTimeDescription(lastMessage.timestamp) : ""}
+      </div>
     </div>
   );
 }
