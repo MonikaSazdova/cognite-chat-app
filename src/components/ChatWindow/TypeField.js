@@ -6,6 +6,8 @@ import useLoggedUser from "../../hooks/useLoggedUser";
 import { v4 as uuidv4 } from "uuid";
 import useSelectedChat from "../../hooks/useSelectedChat";
 import useSelectedContact from "../../hooks/useSelectedContact";
+import { scripts } from "../../constants/chatScripts";
+import { findAutomatedResponse } from "../../utils/utils";
 
 function TypeField() {
   const loggedUser = useLoggedUser();
@@ -14,6 +16,19 @@ function TypeField() {
   const selectedContact = useSelectedContact();
   const selectedChat = useSelectedChat(selectedContact);
   const currentChatId = selectedChat.chatId;
+
+const sendAutomatedResponse = () => {
+  const response = findAutomatedResponse(messageText, scripts);
+  setTimeout(() => {
+    const newMessage = {
+      msgId: uuidv4(),
+      text: response,
+      timestamp: new Date().toISOString(),
+      userId: selectedContact.userId,
+    };
+    dispatch(addMessageToChat(currentChatId, newMessage));
+  }, 3000);
+  };
 
   const handleInputChange = (e) => setMessageText(e.target.value);
 
@@ -27,6 +42,7 @@ function TypeField() {
       };
       dispatch(addMessageToChat(currentChatId, newMessage));
       setMessageText("");
+      sendAutomatedResponse();
     }
   };
 

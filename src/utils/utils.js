@@ -87,3 +87,22 @@ export const formatTextWithNewLines = (text) => {
     </React.Fragment>
   ));
 }
+
+export const findAutomatedResponse = (userMessage, scripts) => {
+  const userMessageLower = userMessage.toLowerCase();
+  let response = "That's interesting! Tell me more.";
+
+  Object.values(scripts).some(category => {
+    return category.triggers.some(trigger => {
+      if (userMessageLower.includes(trigger.toLowerCase())) {
+        response = category.responses[
+          Math.floor(Math.random() * category.responses.length)
+        ];
+        return true;
+      }
+      return false;
+    });
+  });
+
+  return response;
+}
