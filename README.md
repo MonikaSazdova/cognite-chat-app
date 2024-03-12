@@ -50,3 +50,15 @@ This section will provide guidance for building and deploying Cognite Chat.
 - Once the deployment process is complete, the Cognite Chat will be available at: [https://bites2bytes.github.io/cognite-chat-app/](https://bites2bytes.github.io/cognite-chat-app/)
 
 **Note:** The url above was marked as dangerous by Google Chrome. It seems that this is a common issue when deploying with GitHub Pages. I am currently trying to solve the problem and get the page reviewd and marked as save. For now, please open with caution.
+
+## Data
+
+The data used consists of two main tables, 'users' and 'chats', each designed to capture the needed interactions. You can see the data structures in the following tables:
+
+![alt text](<data-tables.png>)
+
+### Data storage
+
+Initially, the chat data was stored locally in the repository within data.js. However, the data has now been moved to a GitHub [gist](https://gist.githubusercontent.com/bites2bytes/20b97cdb45c73a0430d48a021e36cf6e/raw/855c9bc0c767583130b2910f6b51d8a292b09135/chatData.json) which, in this case, serves as an endpoint from which we can retrieve the data in a JSON format (read-only API).
+
+####Note: All the data used in the datasets is publicly available.
