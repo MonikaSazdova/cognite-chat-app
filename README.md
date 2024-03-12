@@ -40,7 +40,7 @@ This section will provide guidance for building and deploying Cognite Chat.
 - If the changes are on a separate branch 'branch-name', a PR from 'branch-name' to master should be opened and merged.
 - After merging, make sure your local master branch is up-to-date with the remote one.
 
-#### 2. Built the application
+#### 2. Build the application
 - With the local master branch up-to-date, run `npm run build` to start the build process. This command compiles the application and prepares it for deployment.
 
 #### 3. Deploy the application:
