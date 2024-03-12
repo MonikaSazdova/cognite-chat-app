@@ -1,3 +1,5 @@
+import React from "react";
+
 export const adjustTextareaHeight = (e) => {
   const textarea = e.target;
   textarea.style.height = "auto";
@@ -75,3 +77,13 @@ const palette = [
 export const getColorForUserId = (index) => {
   return palette[index % palette.length];
 };
+
+
+export const formatTextWithNewLines = (text) => {
+  return text.split('\n').map((line, index) => (
+    <React.Fragment key={index}>
+      {line}
+      <br />
+    </React.Fragment>
+  ));
+}
