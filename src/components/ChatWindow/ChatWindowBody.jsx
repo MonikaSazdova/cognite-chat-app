@@ -28,7 +28,7 @@ function ChatWindowBody() {
       className="w-full flex flex-col flex-grow overflow-auto gap-1 px-10 py-6 bg-cover bg-no-repeat bg-center"
       style={{ backgroundImage: `url(${backgroundImg})` }}
     >
-      {messages.length === 0 && messages.length === 0 ? (
+      {messages.length === 0 ? (
         <div className="flex flex-grow items-center justify-center">
           <p className="text-gray-500">Start a conversation</p>
         </div>
