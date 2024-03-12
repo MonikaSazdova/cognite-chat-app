@@ -60,6 +60,6 @@ The data used consists of two main tables, 'users' and 'chats', each designed to
 
 ### Data storage
 
-Initially, the chat data was stored locally in the repository within data.js. However, the data has now been moved to a [GitHub gist](https://gist.githubusercontent.com/bites2bytes/20b97cdb45c73a0430d48a021e36cf6e/raw/855c9bc0c767583130b2910f6b51d8a292b09135/chatData.json) which, in this case, serves as an endpoint from which we can retrieve the data in a JSON format (read-only API).
+Initially, the chat data was stored locally in the repository within data.js. However, the data has now been moved to a [GitHub gist](https://gist.githubusercontent.com/bites2bytes/20b97cdb45c73a0430d48a021e36cf6e/raw/291d137a234650c06049e0353691c06133156c1b/chatData.json) which, in this case, serves as an endpoint from which we can retrieve the data in a JSON format (read-only API).
 
 #### Note: All the data used in the datasets is publicly available.
