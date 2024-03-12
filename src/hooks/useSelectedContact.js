@@ -1,10 +1,11 @@
 import { useSelector } from "react-redux";
-import { useUser } from "../context/UserContext";
 import { setDefaultSelectedContact } from "../utils/utils";
-import { users } from "../data";
+import { useData } from "../context/DataContext";
+import useLoggedUser from "./useLoggedUser";
 
 const useSelectedContact = () => {
-	const loggedUser = useUser();
+	const loggedUser = useLoggedUser();
+	const users = useData().users;
 	const defaultUser = setDefaultSelectedContact(loggedUser, users);
 	const selectedContact = useSelector((state) => state.chat.selectedContact) || defaultUser;
 	return selectedContact

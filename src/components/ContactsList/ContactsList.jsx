@@ -1,19 +1,20 @@
 import ContactCard from "./ContactCard";
 import { useEffect } from "react";
-import { useUser } from "../../context/UserContext";
-import { users } from "../../data";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setSelectedContact,
   setContacts,
 } from "../../store/actions/chatActions";
 import useSelectedContact from "../../hooks/useSelectedContact";
+import useLoggedUser from "../../hooks/useLoggedUser";
+import { useData } from "../../context/DataContext";
 
 function ContactsList() {
   const dispatch = useDispatch();
-  const loggedUser = useUser();
+  const loggedUser = useLoggedUser();
   const userContacts = useSelector((state) => state.chat.contacts);
   const selectedContact = useSelectedContact();
+  const users = useData().users;
 
   useEffect(() => {
     const userContactsIds = loggedUser.contacts;

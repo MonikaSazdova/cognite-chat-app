@@ -1,22 +1,23 @@
 import MessageCard from "./MessageCard";
 import backgroundImg from "../../assets/chat_background.png";
-import { useSelector } from "react-redux";
 import { useEffect, useState, useRef } from "react";
 import useSelectedContact from "../../hooks/useSelectedContact";
+import { useSelector } from "react-redux";
 
 function ChatWindowBody() {
-  const selectedContact = useSelectedContact();
   const [messages, setMessages] = useState([]);
+  const selectedContact = useSelectedContact();
+  const updatedChats = useSelector((state) => state.chat.chats);
   const windowBottom = useRef(null);
-  const chats = useSelector(state => state.chat.chats);
 
   useEffect(() => {
-    const selectedChat = chats.find(chat => chat.participants.includes(selectedContact?.userId));
+    const selectedChat = updatedChats?.find((chat) =>
+      chat.participants.includes(selectedContact?.userId)
+    );
     if (selectedChat) {
       setMessages(selectedChat.messages);
     }
-  }, [chats, selectedContact]);
-
+  }, [updatedChats, selectedContact]);
 
   useEffect(() => {
     windowBottom.current?.scrollIntoView({ behavior: "smooth" });

@@ -1,9 +1,9 @@
 import InitialsAvatar from "../User/InitialsAvatar";
-import { useSelector } from "react-redux";
+import { useData } from "../../context/DataContext";
 import { getTimeDescription } from "../../utils/utils";
 
 function ContactCard({ contact, onClick, isSelected }) {
-  const chats = useSelector(state => state.chat.chats);
+  const chats = useData().chats;
   const selectedChat = chats.find(chat => chat.participants.includes(contact?.userId));
   const lastMessage = selectedChat && selectedChat.messages.length > 0
     ? selectedChat.messages[selectedChat.messages.length - 1]

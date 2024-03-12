@@ -2,13 +2,13 @@ import { useState } from "react";
 import { adjustTextareaHeight } from "../../utils/utils";
 import { useDispatch } from "react-redux";
 import { addMessageToChat } from "../../store/actions/chatActions";
-import { useUser } from "../../context/UserContext";
+import useLoggedUser from "../../hooks/useLoggedUser";
 import { v4 as uuidv4 } from "uuid";
 import useSelectedChat from "../../hooks/useSelectedChat";
 import useSelectedContact from "../../hooks/useSelectedContact";
 
 function TypeField() {
-  const loggedUser = useUser();
+  const loggedUser = useLoggedUser();
   const [messageText, setMessageText] = useState("");
   const dispatch = useDispatch();
   const selectedContact = useSelectedContact();

@@ -1,8 +1,9 @@
-import { chats } from "../data";
-import { useUser } from "../context/UserContext";
+import useLoggedUser from "./useLoggedUser";
+import { useData } from "../context/DataContext";
 
 const useSelectedChat = (selectedContact) => {
-	const loggedUser = useUser();
+	const loggedUser = useLoggedUser();
+	const chats = useData().chats;
 	return chats.find(
 		(chat) =>
 			chat.participants.includes(loggedUser.userId) &&
