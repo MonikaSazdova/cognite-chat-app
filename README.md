@@ -65,7 +65,7 @@ You can have an interactive chat experience in two ways:
 - What is the generative AI problem?
 - What is the industrial AI problem?
 - Why contextualization matters when it comes to training LLMs?
-- Witch are the five types of contextualization?
+- Which are the five types of contextualization?
 - What is entity matching?
 - What are the different options for entity matching?
 

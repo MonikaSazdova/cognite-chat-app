@@ -20,4 +20,4 @@ export const palette = [
 ];
 
 export const DATA_URL = "https://gist.githubusercontent.com/bites2bytes/20b97cdb45c73a0430d48a021e36cf6e/raw/c8668c6eac0b0ef4ff453a985eb4f7f92dff27d3/chatData.json"
-export const SCRIPTS_URL = "https://gist.githubusercontent.com/bites2bytes/1c5494766a71dd23abae8f979a0e851c/raw/ce31994b7d230075568e34e014db2d0d59bfe598/chatScripts.json"
+export const SCRIPTS_URL = "https://gist.githubusercontent.com/bites2bytes/1c5494766a71dd23abae8f979a0e851c/raw/0095d2cdd979b61bf69f749f3d79e66fa4268e0e/chatScripts.json"
