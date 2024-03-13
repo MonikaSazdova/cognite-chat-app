@@ -90,15 +90,20 @@ export const formatTextWithNewLines = (text) => {
 }
 
 export const findAutomatedResponse = (userMessage, scripts) => {
-  const userMessageLower = userMessage.toLowerCase();
+  const specificQuestions = scripts["Specific Questions"];
   let response = "That's interesting! Tell me more.";
 
+  const specificQuestion = Object.keys(specificQuestions).find(question =>
+    userMessage.toLowerCase().includes(question.toLowerCase())
+  );
+
+  if (specificQuestion) return specificQuestions[specificQuestion];
+
   Object.values(scripts).some(category => {
+    if (category === specificQuestions) return false;
     return category.triggers.some(trigger => {
-      if (userMessageLower.includes(trigger.toLowerCase())) {
-        response = category.responses[
-            Math.floor(Math.random() * category.responses.length)
-          ];
+      if (userMessage.toLowerCase().includes(trigger.toLowerCase())) {
+        response = category.responses[Math.floor(Math.random() * category.responses.length)];
         return true;
       }
       return false;
