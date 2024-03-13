@@ -50,32 +50,12 @@ export const getTimeDescription = (timestamp) => {
 };
 
 export const setDefaultSelectedContact = (loggedUser, users) => {
-  const defaultUserId = loggedUser.contacts[0];
+  const defaultUserId = loggedUser.contacts[6];
   return users.find((user) => user.userId === defaultUserId);
 };
 
-const palette = [
-  "#d06c6c",
-  "#d35f6e",
-  "#d98e47",
-  "#c56cb5",
-  "#339f91",
-  "#339fca",
-  "#d1b05f",
-  "#c56c95",
-  "#d1734f",
-  "#c7a938",
-  "#72b79b",
-  "#3fc9d0",
-  "#4f9fd1",
-  "#7f6cb8",
-  "#6879b7",
-  "#768f99",
-  "#8cbf99",
-  "#cfbe71",
-];
 
-export const getColorForUserId = (index) => {
+export const getColorForUserId = (index, palette) => {
   return palette[index % palette.length];
 };
 

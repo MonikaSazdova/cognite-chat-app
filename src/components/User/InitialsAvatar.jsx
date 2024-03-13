@@ -1,3 +1,4 @@
+import { palette } from "../../constants/constants";
 import { getColorForUserId } from "../../utils/utils";
 
 function InitialsAvatar({ user, isHeader }) {
@@ -6,7 +7,7 @@ function InitialsAvatar({ user, isHeader }) {
   };
 
   const avatarSize = isHeader ? "w-10 h-10" : "w-14 h-14";
-  const avatarBackground = { backgroundColor: getColorForUserId(user.userId) };
+  const avatarBackground = { backgroundColor: getColorForUserId(user.userId, palette) };
 
   return (
     <div

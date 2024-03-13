@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { findAutomatedResponse,adjustTextareaHeight } from "../../utils/utils";
 import { addMessageToChat } from "../../store/actions/chatActions";
 import { useLoggedUser, useFetch, useSelectedContact,useSelectedChat } from "../../hooks";
-
+import { SCRIPTS_URL } from "../../constants/constants";
 
 function TypeField() {
   const loggedUser = useLoggedUser();
@@ -13,7 +13,7 @@ function TypeField() {
   const selectedContact = useSelectedContact();
   const selectedChat = useSelectedChat(selectedContact);
   const currentChatId = selectedChat.chatId;
-  const scripts = useFetch("https://gist.githubusercontent.com/bites2bytes/1c5494766a71dd23abae8f979a0e851c/raw/5b1f4a533dd0f6147393b34b7b3a9db119857567/chatScripts.json")
+  const scripts = useFetch(SCRIPTS_URL)
 
 
 
