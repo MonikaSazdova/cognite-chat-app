@@ -27,12 +27,13 @@ export const getTimeDescription = (timestamp) => {
   const diffInMonths = Math.floor(diffInDays / 30);
   const diffInYears = Math.floor(diffInDays / 365);
 
-  if (diffInHours < 24)
-    return `${date.getHours()}:${date
-      .getMinutes()
-      .toString()
-      .padStart(2, "0")}`;
-  if (diffInHours < 48) return "yesterday";
+  const hourMinutes = `${date.getHours()}:${date
+    .getMinutes()
+    .toString()
+    .padStart(2, "0")}`
+
+  if (diffInHours < 24) return hourMinutes;
+  if (diffInHours < 48) return `yesterday at ${hourMinutes}`;
   if (diffInHours < 72) return "two days ago";
   if (diffInHours < 96) return "three days ago";
   if (diffInDays < 7) return "few days ago";
