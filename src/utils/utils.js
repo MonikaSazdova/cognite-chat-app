@@ -30,7 +30,7 @@ export const getTimeDescription = (timestamp) => {
   const hourMinutes = `${date.getHours()}:${date
     .getMinutes()
     .toString()
-    .padStart(2, "0")}`
+    .padStart(2, "0")}`;
 
   if (diffInHours < 24) return hourMinutes;
   if (diffInHours < 48) return `yesterday at ${hourMinutes}`;
@@ -97,8 +97,8 @@ export const findAutomatedResponse = (userMessage, scripts) => {
     return category.triggers.some(trigger => {
       if (userMessageLower.includes(trigger.toLowerCase())) {
         response = category.responses[
-          Math.floor(Math.random() * category.responses.length)
-        ];
+            Math.floor(Math.random() * category.responses.length)
+          ];
         return true;
       }
       return false;
@@ -106,4 +106,37 @@ export const findAutomatedResponse = (userMessage, scripts) => {
   });
 
   return response;
-}
+};
+
+export const sortUsersByMostRecentMessage = (users, chats, loggedUser) => {
+  const loggedUserId = loggedUser.userId;
+
+  const chatInfo = chats.map((chat) => {
+    const contact = chat.participants.find(
+      (participant) => participant !== loggedUserId
+    );
+    let timestamp = null;
+
+    if (chat.messages.length > 0) {
+      const lastMessage = chat.messages[chat.messages.length - 1];
+      timestamp = new Date(lastMessage.timestamp);
+    }
+
+    return {
+      userId: contact,
+      timestamp: timestamp,
+    };
+  });
+
+  chatInfo.sort((a, b) => b.timestamp - a.timestamp || 1);
+
+  const sortedUsers = chatInfo.map((info) =>
+    users.find((user) => user.userId === info.userId)
+  );
+
+  return sortedUsers;
+};
+
+export const getContactsOfUser = (ids, users) => {
+  return users.filter((user) => ids.includes(user.userId));
+};
