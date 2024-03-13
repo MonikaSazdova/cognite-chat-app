@@ -12,8 +12,6 @@ A simple React-based chat application designed to satisfy the following requirem
 2. Talking to a backend.
 3. Multiple users.
 
-Tailwind CSS was used for styling.
-
 ## Quick start
 Clone the repository
 
@@ -47,7 +45,7 @@ This section will provide guidance for building and deploying Cognite Chat.
 #### 4. Accessing the deployed application:
 - Once the deployment process is complete, the Cognite Chat will be available at [https://bites2bytes.github.io/cognite-chat-app/](https://bites2bytes.github.io/cognite-chat-app/)
 
-**Note:** The URL above was marked as dangerous by Google Chrome. It seems that this is a common issue when deploying with GitHub Pages. I am currently trying to solve the problem and get the page reviewed and marked as saved. For now, please open with caution.
+**Note:** The URL above was marked as dangerous by Google Chrome. It seems that this is a common issue when deploying with GitHub Pages. I am currently trying to solve the problem and get the page reviewed and marked as save. For now, please open with caution.
 
 
 ## How to chat
