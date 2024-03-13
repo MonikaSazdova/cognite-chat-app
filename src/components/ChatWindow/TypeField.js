@@ -3,10 +3,8 @@ import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { findAutomatedResponse,adjustTextareaHeight } from "../../utils/utils";
 import { addMessageToChat } from "../../store/actions/chatActions";
-import useLoggedUser from "../../hooks/useLoggedUser";
-import useSelectedChat from "../../hooks/useSelectedChat";
-import useSelectedContact from "../../hooks/useSelectedContact";
-import useFetch from "../../hooks/useFetch";
+import { useLoggedUser, useFetch, useSelectedContact,useSelectedChat } from "../../hooks";
+
 
 function TypeField() {
   const loggedUser = useLoggedUser();
@@ -16,6 +14,8 @@ function TypeField() {
   const selectedChat = useSelectedChat(selectedContact);
   const currentChatId = selectedChat.chatId;
   const scripts = useFetch("https://gist.githubusercontent.com/bites2bytes/1c5494766a71dd23abae8f979a0e851c/raw/5b1f4a533dd0f6147393b34b7b3a9db119857567/chatScripts.json")
+
+
 
 const sendAutomatedResponse = () => {
   const response = findAutomatedResponse(messageText, scripts.data);
