@@ -20,7 +20,7 @@ const ChatWindowBody = () => {
   }, [updatedChats, selectedContact]);
 
   useEffect(() => {
-    windowBottom.current?.scrollIntoView({ behavior: "smooth" });
+    windowBottom.current?.scrollIntoView({ behavior: "instant" });
   }, [messages]);
 
   return (
