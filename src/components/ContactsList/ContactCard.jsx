@@ -1,20 +1,13 @@
-import InitialsAvatar from "../User/InitialsAvatar";
-import { getTimeDescription } from "../../utils/utils";
 import { useSelector } from "react-redux";
+import { getTimeDescription, getLastMessage } from "../../utils/utils";
+import InitialsAvatar from "../User/InitialsAvatar";
 
-function ContactCard({ contact, onClick, isSelected }) {
+const ContactCard = ({ contact, onClick, isSelected }) => {
   const chats = useSelector((state) => state.chat.chats);
   const selectedChat = chats.find((chat) =>
     chat.participants.includes(contact?.userId)
   );
   const lastMessage = getLastMessage(selectedChat);
-
-  function getLastMessage(chat) {
-    if (chat && chat.messages.length > 0) {
-      return chat.messages[chat.messages.length - 1];
-    }
-    return null;
-  }
 
   return (
     <div
@@ -40,6 +33,6 @@ function ContactCard({ contact, onClick, isSelected }) {
       </div>
     </div>
   );
-}
+};
 
 export default ContactCard;

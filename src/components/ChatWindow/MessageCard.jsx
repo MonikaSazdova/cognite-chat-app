@@ -1,11 +1,10 @@
-import { getTimeDescription } from "../../utils/utils";
-import useSelectedContact from "../../hooks/useSelectedContact";
-import { formatTextWithNewLines } from "../../utils/utils";
+import { getTimeDescription, formatTextWithNewLines } from "../../utils/utils";
+import { useSelectedContact } from "../../hooks";
 
-function MessageCard({ text, timestamp, userId }) {
+const MessageCard = ({ text, timestamp, userId }) => {
   const selectedContact = useSelectedContact();
-  const isMessageFromContact = selectedContact.userId === userId;
   const formattedTime = getTimeDescription(timestamp);
+  const isMessageFromContact = selectedContact.userId === userId;
 
   return (
     <div className="w-full bg-transparent">

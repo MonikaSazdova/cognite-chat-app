@@ -1,10 +1,10 @@
+import { useEffect, useState, useRef } from "react";
+import { useSelector } from "react-redux";
+import { useSelectedContact } from "../../hooks";
 import MessageCard from "./MessageCard";
 import backgroundImg from "../../assets/chat_background.png";
-import { useEffect, useState, useRef } from "react";
-import useSelectedContact from "../../hooks/useSelectedContact";
-import { useSelector } from "react-redux";
 
-function ChatWindowBody() {
+const ChatWindowBody = () => {
   const [messages, setMessages] = useState([]);
   const selectedContact = useSelectedContact();
   const updatedChats = useSelector((state) => state.chat.chats);
@@ -45,6 +45,6 @@ function ChatWindowBody() {
       <div ref={windowBottom} />
     </div>
   );
-}
+};
 
 export default ChatWindowBody;

@@ -1,21 +1,26 @@
 import { useDispatch, useSelector } from "react-redux";
-import ContactCard from "./ContactCard";
 import { setSelectedContact } from "../../store/actions/chatActions";
 import { useData } from "../../context/DataContext";
-import useSelectedContact from "../../hooks/useSelectedContact";
-import useLoggedUser from "../../hooks/useLoggedUser";
-import { sortUsersByMostRecentMessage, getContactsOfUser } from "../../utils/utils";
+import { useSelectedContact, useLoggedUser } from "../../hooks";
+import {
+  sortUsersByMostRecentMessage,
+  getContactsOfUser,
+} from "../../utils/utils";
+import ContactCard from "./ContactCard";
 
-
-function ContactsList() {
+const ContactsList = () => {
   const dispatch = useDispatch();
   const selectedContact = useSelectedContact();
   const loggedUser = useLoggedUser();
   const users = useData().users;
-  const chats = useSelector(state => state.chat.chats);
+  const chats = useSelector((state) => state.chat.chats);
   const userContactsIds = loggedUser.contacts;
   const userContacts = getContactsOfUser(userContactsIds, users);
-  const sortedUsers = sortUsersByMostRecentMessage(userContacts, chats, loggedUser);
+  const sortedUsers = sortUsersByMostRecentMessage(
+    userContacts,
+    chats,
+    loggedUser
+  );
 
   const onCardClick = (contact) => () => {
     dispatch(setSelectedContact(contact));
@@ -35,6 +40,6 @@ function ContactsList() {
       })}
     </div>
   );
-}
+};
 
 export default ContactsList;

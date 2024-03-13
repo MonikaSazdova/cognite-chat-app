@@ -1,13 +1,15 @@
 import { palette } from "../../constants/constants";
 import { getColorForUserId } from "../../utils/utils";
 
-function InitialsAvatar({ user, isHeader }) {
+const InitialsAvatar = ({ user, isHeader }) => {
   const getInitials = (name = "", surname = "") => {
     return `${name[0].toUpperCase()}${surname[0].toUpperCase()}`;
   };
 
   const avatarSize = isHeader ? "w-10 h-10" : "w-14 h-14";
-  const avatarBackground = { backgroundColor: getColorForUserId(user.userId, palette) };
+  const avatarBackground = {
+    backgroundColor: getColorForUserId(user.userId, palette),
+  };
 
   return (
     <div
@@ -17,6 +19,6 @@ function InitialsAvatar({ user, isHeader }) {
       {getInitials(user.name, user.surname)}
     </div>
   );
-}
+};
 
 export default InitialsAvatar;

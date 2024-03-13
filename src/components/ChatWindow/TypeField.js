@@ -1,33 +1,36 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { findAutomatedResponse,adjustTextareaHeight } from "../../utils/utils";
+import { findAutomatedResponse, adjustTextareaHeight } from "../../utils/utils";
 import { addMessageToChat } from "../../store/actions/chatActions";
-import { useLoggedUser, useFetch, useSelectedContact,useSelectedChat } from "../../hooks";
+import {
+  useLoggedUser,
+  useFetch,
+  useSelectedContact,
+  useSelectedChat,
+} from "../../hooks";
 import { SCRIPTS_URL } from "../../constants/constants";
 
-function TypeField() {
-  const loggedUser = useLoggedUser();
+const TypeField = () => {
   const [messageText, setMessageText] = useState("");
-  const dispatch = useDispatch();
+  const loggedUser = useLoggedUser();
   const selectedContact = useSelectedContact();
   const selectedChat = useSelectedChat(selectedContact);
+  const dispatch = useDispatch();
+  const scripts = useFetch(SCRIPTS_URL);
   const currentChatId = selectedChat.chatId;
-  const scripts = useFetch(SCRIPTS_URL)
 
-
-
-const sendAutomatedResponse = () => {
-  const response = findAutomatedResponse(messageText, scripts.data);
-  setTimeout(() => {
-    const newMessage = {
-      msgId: uuidv4(),
-      text: response,
-      timestamp: new Date().toISOString(),
-      userId: selectedContact.userId,
-    };
-    dispatch(addMessageToChat(currentChatId, newMessage));
-  }, 3000);
+  const sendAutomatedResponse = () => {
+    const response = findAutomatedResponse(messageText, scripts.data);
+    setTimeout(() => {
+      const newMessage = {
+        msgId: uuidv4(),
+        text: response,
+        timestamp: new Date().toISOString(),
+        userId: selectedContact.userId,
+      };
+      dispatch(addMessageToChat(currentChatId, newMessage));
+    }, 3000);
   };
 
   const handleInputChange = (e) => setMessageText(e.target.value);
@@ -47,7 +50,7 @@ const sendAutomatedResponse = () => {
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleOnSend();
     }
@@ -72,6 +75,6 @@ const sendAutomatedResponse = () => {
       </button>
     </div>
   );
-}
+};
 
 export default TypeField;

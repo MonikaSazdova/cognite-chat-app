@@ -26,11 +26,7 @@ export const getTimeDescription = (timestamp) => {
   const diffInWeeks = Math.floor(diffInDays / 7);
   const diffInMonths = Math.floor(diffInDays / 30);
   const diffInYears = Math.floor(diffInDays / 365);
-
-  const hourMinutes = `${date.getHours()}:${date
-    .getMinutes()
-    .toString()
-    .padStart(2, "0")}`;
+  const hourMinutes = `${date.getHours()}:${date.getMinutes().toString().padStart(2, "0")}`;
 
   if (diffInHours < 24) return hourMinutes;
   if (diffInHours < 48) return `yesterday at ${hourMinutes}`;
@@ -125,3 +121,10 @@ export const sortUsersByMostRecentMessage = (users, chats, loggedUser) => {
 export const getContactsOfUser = (ids, users) => {
   return users.filter((user) => ids.includes(user.userId));
 };
+
+export const getLastMessage = (chat) => {
+  if (chat && chat.messages.length > 0) {
+    return chat.messages[chat.messages.length - 1];
+  }
+  return null;
+}
