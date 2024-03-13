@@ -78,7 +78,7 @@ The data consists of two main tables, 'users' and 'chats', each designed to capt
 
 ### Data storage
 
-The chat data was initially stored locally in the repository within data.js and scripts.js. However, the data has now been moved to GitHub gists, which, in this case, serves as an endpoint from which we can retrieve the data in a JSON format. You can find the data on the following links: [chatData]((https://gist.githubusercontent.com/bites2bytes/20b97cdb45c73a0430d48a021e36cf6e/raw/c8668c6eac0b0ef4ff453a985eb4f7f92dff27d3/chatData.json)) and [chatScripts](https://gist.githubusercontent.com/bites2bytes/1c5494766a71dd23abae8f979a0e851c/raw/5b1f4a533dd0f6147393b34b7b3a9db119857567/chatScripts.json)
+The chat data was initially stored locally in the repository within data.js and scripts.js. However, the data has now been moved to GitHub gists, which, in this case, serves as an endpoint from which we can retrieve the data in a JSON format. You can find the data on the following links: [chatData](https://gist.githubusercontent.com/bites2bytes/20b97cdb45c73a0430d48a021e36cf6e/raw/133bd594120102eaf462a0af50b24a9af84ae471/chatData.json) and [chatScripts](https://gist.githubusercontent.com/bites2bytes/1c5494766a71dd23abae8f979a0e851c/raw/5b1f4a533dd0f6147393b34b7b3a9db119857567/chatScripts.json)
 
 #### Note: All the data used in the datasets is publicly available.
 
